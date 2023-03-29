@@ -1,0 +1,7 @@
+tsconfig.sublime-workspace
+.next/
+node_modules/
+.DS_Store
+DS_Store
+aws-lambda/out
+aws-lambda/src
