@@ -20,12 +20,21 @@ export default function Index() {
   const [options, setOptions] = useState([]);
   const [winIndex, setWinIndex] = useState(0);
   const [image, setImage] = useState(win);
+  const [dayOfYear, setDayOfYear] = useState(0);
 
 
   function generateData() {
     setReady(false);
     let validIds = Object.keys(gamePairs).length;
-    let ran = Math.ceil(Math.random() * validIds);
+    const date = new Date();
+    const dayOfMonth = date.getDate();
+    const startOfYear = new Date(date.getFullYear(), 0, 0);
+    const diff = Number(date) - Number(startOfYear);
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+    setDayOfYear(dayOfYear)
+
+    let ran = Math.ceil(dayOfMonth % validIds);
     let arr = gamePairs[ran.toString()]
 
     let imagePaths = [];
@@ -86,8 +95,8 @@ export default function Index() {
           <Intro />
           { (ready) &&
             <span> 
-              <Game moviePoster={image.src} />
-              <Guess winIndex={winIndex} options1={options}/>
+              <Game moviePoster={image.src} day={dayOfYear}/>
+              <Guess winIndex={winIndex} options1={options} day={dayOfYear} moviePoster={image.src}/>
             </span>  
           }
          { (!ready && !promiseInProgress1) && <StartGame onClick={generateData} /> }

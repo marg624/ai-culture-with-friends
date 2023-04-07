@@ -8,11 +8,14 @@ import EndGame from './end-game';
 
 type Props = {
   toggleFunc: React.MouseEventHandler<HTMLDivElement>,
-  isWin?: boolean
+  isWin?: boolean,
+  endMsg?: string,
+  img?: string,
+  img2?: string
 }
 
 const InfoOverlay = ({
-  toggleFunc, isWin
+  toggleFunc, isWin, endMsg, img, img2
 }: Props) => {
 
   return (
@@ -37,7 +40,7 @@ const InfoOverlay = ({
           }}>
             <div style={{position: 'absolute', top: 5, right: 15}} onClick={toggleFunc} > <h1 className="text-3xl mb-4 cursor-pointer text-slate-300">x</h1> </div>
             {!isWin && <HowTo /> }
-            {isWin && <EndGame />}
+            {isWin && <EndGame endMsg={endMsg} img={img} img2={img2} />}
           </div>
        </div>
   )

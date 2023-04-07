@@ -7,9 +7,11 @@ import InfoOverlay from './info-overlay';
 const Guess = (props) => {
   const [inProgress, setInProgress] = useState(false)
   const [win, setWin] = useState(false)
+  const [winImg, setWinImg] = useState("")
 
   async function onChoose(id) {
     if (id == props.winIndex) {
+      setWinImg(props.options1[id].imageUrl)
       setWin(true)
     }
   }
@@ -43,7 +45,7 @@ const Guess = (props) => {
       
       <br/>
 
-     {win && <InfoOverlay isWin={true} toggleFunc={toggle}/>}
+     {win && <InfoOverlay isWin={true} toggleFunc={toggle} endMsg={props.day} img={props.moviePoster} img2={winImg}/>}
 
       </section>
     );
