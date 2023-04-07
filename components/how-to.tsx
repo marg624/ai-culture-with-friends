@@ -12,18 +12,7 @@ const HowTo = (props) => {
               <h3 className="text-3xl mb-4 leading-snug">
               How To Play
               </h3>
-              [CHANGE ME]
-              <br/><br/>
-              Example:
-              <br/>
-                <img src={howto0.src}  /> 
-              <br/>
-              [CHANGE ME]:
-                  <ul className="list-inside list-disc">
-                    <li>step 1</li>
-                    <li>step 2</li>
-                  </ul> 
-
+              We used <a href="https://openai.com/product/dall-e-2">DALL-E</a> to generate a new movie poster given an existing movie's summary. You will be given 6 choices. See if you can guess today's poster correctly! 
           </div>
   )
 }

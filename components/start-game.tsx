@@ -23,7 +23,7 @@ const StartGame = ({
           textAlign: 'center',
           width: '100%'
         }}>
-          [ CHANGE ME ] <br/>
+          [ I'm not bad, I'm just drawn that way. ] <br/>
           <button onClick={onClick} className="hover:scale-110" > 
             <img src={playImage.src} width="100px" /> 
           </button>

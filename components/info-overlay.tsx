@@ -7,11 +7,12 @@ import HowTo from './how-to';
 import EndGame from './end-game';
 
 type Props = {
-  toggleFunc: React.MouseEventHandler<HTMLDivElement>
+  toggleFunc: React.MouseEventHandler<HTMLDivElement>,
+  isWin?: boolean
 }
 
 const InfoOverlay = ({
-  toggleFunc
+  toggleFunc, isWin
 }: Props) => {
 
   return (
@@ -35,7 +36,8 @@ const InfoOverlay = ({
               height: '75%'
           }}>
             <div style={{position: 'absolute', top: 5, right: 15}} onClick={toggleFunc} > <h1 className="text-3xl mb-4 cursor-pointer text-slate-300">x</h1> </div>
-             <HowTo /> 
+            {!isWin && <HowTo /> }
+            {isWin && <EndGame />}
           </div>
        </div>
   )

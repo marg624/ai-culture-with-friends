@@ -5,14 +5,31 @@ import Layout from '../components/layout'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import StartGame from '../components/start-game'
+import Game from '../components/game'
+import Guess from '../components/guess'
 import React, {useState} from 'react';
 import { Rings, MutatingDots } from 'react-loader-spinner';
 import { trackPromise, usePromiseTracker } from 'react-promise-tracker';
+import gamePairs from '../public/assets/options.js';
+import win from '../public/assets/movies/1.png';
 
 export default function Index() {
 
   const { promiseInProgress: promiseInProgress1 } = usePromiseTracker();
   const [ready, setReady] = useState(false);
+
+  const validIds = Object.keys(gamePairs).length;
+  const ran = Math.ceil(Math.random() * validIds);
+  const arr = gamePairs[ran.toString()]
+
+  const imagePaths = [];
+  const images = require.context('../public/assets/movies/', false, /\.(png)$/);
+  images.keys().forEach((imagePath) => {
+    imagePaths.push(images(imagePath).default);
+  });
+
+  const img = imagePaths[ran - 1]
+
 
   function generateData() {
     setReady(true);
@@ -40,15 +57,16 @@ export default function Index() {
     <>
       <Layout>
         <Head>
-          <title>[CHANGE ME] w/ friends</title>
+          <title>AI Movie Posters w/ friends</title>
         </Head>
         <Container>
           <Intro />
           { (ready) &&
-              <span>
-                <strong>[CHANGE ME - the game]</strong>
-               </span>
-         }
+            <span> 
+              <Game moviePoster={img.src} />
+              <Guess winIndex={0} options1={arr}/>
+            </span>  
+          }
          { (!ready && !promiseInProgress1) && <StartGame onClick={generateData} /> }
          { promiseInProgress1 &&
           <div className="flex justify-center bg-black bg-opacity-50" style={{
