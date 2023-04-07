@@ -17,22 +17,45 @@ export default function Index() {
 
   const { promiseInProgress: promiseInProgress1 } = usePromiseTracker();
   const [ready, setReady] = useState(false);
-
-  const validIds = Object.keys(gamePairs).length;
-  const ran = Math.ceil(Math.random() * validIds);
-  const arr = gamePairs[ran.toString()]
-
-  const imagePaths = [];
-  const images = require.context('../public/assets/movies/', false, /\.(png)$/);
-  images.keys().forEach((imagePath) => {
-    imagePaths.push(images(imagePath).default);
-  });
-
-  const img = imagePaths[ran - 1]
+  const [options, setOptions] = useState([]);
+  const [winIndex, setWinIndex] = useState(0);
+  const [image, setImage] = useState(win);
 
 
   function generateData() {
+    setReady(false);
+    let validIds = Object.keys(gamePairs).length;
+    let ran = Math.ceil(Math.random() * validIds);
+    let arr = gamePairs[ran.toString()]
+
+    let imagePaths = [];
+    let images = require.context('../public/assets/movies/', false, /\.(png)$/);
+    images.keys().forEach((imagePath) => {
+      imagePaths.push(images(imagePath).default);
+    });
+    let img = imagePaths[ran - 1]
+    setImage(img)
+
+    let w = arr[0].title;
+    let shuffledArray = shuffle(arr);
+    setOptions(shuffledArray)
+
+    Object.keys(shuffledArray).map((key, index) => {
+        let name = shuffledArray[key].title
+        if (w === name) {
+          setWinIndex(index)
+        }
+    })
+
     setReady(true);
+  }
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array.reverse();
   }
 
   const Loading = () => (
@@ -63,8 +86,8 @@ export default function Index() {
           <Intro />
           { (ready) &&
             <span> 
-              <Game moviePoster={img.src} />
-              <Guess winIndex={0} options1={arr}/>
+              <Game moviePoster={image.src} />
+              <Guess winIndex={winIndex} options1={options}/>
             </span>  
           }
          { (!ready && !promiseInProgress1) && <StartGame onClick={generateData} /> }
