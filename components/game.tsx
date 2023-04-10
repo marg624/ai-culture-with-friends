@@ -31,7 +31,6 @@ const Game = ({
   return (
       <div className="flex flex-col items-center">
         <h1 className="text-3xl md:text-4xl font-bold mt-4">The featured cinematic masterpiece of the day! </h1>
-        <h1 className="text-2xl md:text-3xl">[{day}/365]</h1><br/>
         <img src={moviePoster} className="shadow-md border-separate p-5" width="500px" />
         <h1 className="text-2xl md:text-2xl font-bold mt-4">This AI generated movie poster is based off of which movie description?</h1>
       </div>
