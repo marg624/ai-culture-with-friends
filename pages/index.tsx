@@ -111,7 +111,7 @@ export default function Index() {
           { (ready) &&
             <span> 
 
-            <h1 className="text-3xl md:text-4xl font-bold mt-4 text-center">Masterpiece Puzzles of the Day! [{dayOfYear}/365]</h1><br/>
+            <h1 className="text-3xl md:text-4xl font-bold mt-4 text-center">Masterpieces of the Day! [{dayOfYear}/365]</h1><br/>
 
               <div className="border-b border-gray-200 dark:border-gray-700">
                 <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
