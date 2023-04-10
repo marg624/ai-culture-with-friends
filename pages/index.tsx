@@ -47,12 +47,15 @@ export default function Index() {
     let ran = Math.ceil(dayOfMonth % validIds);
     let arr = gamePairs[ran.toString()]
 
-    let imagePaths = [];
+    let imagePaths = {};
     let images = require.context('../public/assets/movies/', false, /\.(png)$/);
     images.keys().forEach((imagePath) => {
-      imagePaths.push(images(imagePath).default);
+      let key = imagePath.replace("public/assets/movies/", "").replace(".png", "")
+      imagePaths[key] = images(imagePath).default;
+      console.log(key)
+      console.log(imagePath)
     });
-    let img = imagePaths[ran - 1]
+    let img = imagePaths[ran]
     setImage(img)
 
     let w = arr[0].title;
