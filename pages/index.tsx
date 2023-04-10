@@ -52,8 +52,6 @@ export default function Index() {
     images.keys().forEach((imagePath) => {
       let key = imagePath.replace("public/assets/movies/", "").replace(".png", "")
       imagePaths[key] = images(imagePath).default;
-      console.log(key)
-      console.log(imagePath)
     });
     let img = imagePaths[ran]
     setImage(img)
