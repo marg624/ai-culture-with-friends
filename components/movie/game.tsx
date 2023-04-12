@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import arrow from '../public/assets/arrow-icon.png';
-import redo from '../public/assets/redo.png';
-import empty from '../public/assets/redo-empty.png';
-import share from '../public/assets/share.png';
+import arrow from '../../public/assets/arrow-icon.png';
+import redo from '../../public/assets/redo.png';
+import empty from '../../public/assets/redo-empty.png';
+import share from '../../public/assets/share.png';
+import spotlight from '../../public/assets/spotlight.png';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import React, {useState} from 'react';
-import spotlight from '../public/assets/spotlight.png';
 
 type Props = {
   moviePoster: string,

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Rings, MutatingDots } from 'react-loader-spinner';
 import {isMobile} from 'react-device-detect';
-import InfoOverlay from './info-overlay';
+import InfoOverlay from '../info-overlay';
 
 
 const Guess = (props) => {
