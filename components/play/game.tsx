@@ -32,7 +32,7 @@ const Game = ({
   return (
       <div className="flex flex-col items-center">
         <img src={curtain.src}  />
-        <h1 className="text-2xl md:text-2xl font-bold mt-4">Which is not an AI generated quote?</h1>
+        <h1 className="text-2xl md:text-2xl font-bold mt-4">Find the real Shakespearean quote in {winPlay}. The rest are AI generated!</h1>
       </div>
   )
 }
