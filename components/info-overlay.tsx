@@ -4,18 +4,22 @@ import Image from 'next/image'
 import React, {useState} from 'react'
 import howto0 from '../public/assets/howto/howto0.png';
 import HowTo from './how-to';
-import EndGame from './end-game';
+import EndGameMovie from './movie/end-game';
+import EndGamePlay from './play/end-game';
 
 type Props = {
   toggleFunc: React.MouseEventHandler<HTMLDivElement>,
   isWin?: boolean,
   endMsg?: string,
   img?: string,
-  img2?: string
+  img2?: string,
+  isWinPlay?: boolean,
+  quote?: string,
+  play?: string,
 }
 
 const InfoOverlay = ({
-  toggleFunc, isWin, endMsg, img, img2
+  toggleFunc, isWin, endMsg, img, img2, isWinPlay, quote, play
 }: Props) => {
 
   return (
@@ -39,8 +43,9 @@ const InfoOverlay = ({
               height: '75%'
           }}>
             <div style={{position: 'absolute', top: 5, right: 15}} onClick={toggleFunc} > <h1 className="text-3xl mb-4 cursor-pointer text-slate-300">x</h1> </div>
-            {!isWin && <HowTo /> }
-            {isWin && <EndGame endMsg={endMsg} img={img} img2={img2} />}
+            {(!isWinPlay && !isWin) && <HowTo /> }
+            {isWin && <EndGameMovie endMsg={endMsg} img={img} img2={img2} />}
+            {isWinPlay && <EndGamePlay endMsg={endMsg} quote={quote} play={play}/>}
           </div>
        </div>
   )

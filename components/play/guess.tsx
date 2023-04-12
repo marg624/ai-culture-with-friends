@@ -53,7 +53,7 @@ const Guess = (props) => {
       
       <br/>
 
-     {win && <InfoOverlay isWin={true} toggleFunc={toggle} endMsg={props.day} />}
+     {win && <InfoOverlay isWinPlay={true} toggleFunc={toggle} endMsg={props.day} play={props.winPlay} quote={props.options1[props.winIndex]}/>}
 
       </section>
     );
