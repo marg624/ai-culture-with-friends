@@ -78,7 +78,7 @@ export default function Index() {
         }
     })
 
-    // TBD2 game data - instantiate
+    // SHakespeare game data - instantiate
     let validIds2 = Object.keys(shakespeareOptionsPlays.quotes).length;
     let ran2 = Math.ceil(dayOfMonth % validIds2);
     let arr2 = shakespeareOptionsPlays.quotes[ran2.toString()]
@@ -134,7 +134,7 @@ export default function Index() {
     <>
       <Layout>
         <Head>
-          <title>AI Fun w/ friends</title>
+          <title>AI Culture w/ friends</title>
         </Head>
         <Container>
           <Intro />
